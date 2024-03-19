@@ -6,7 +6,7 @@ To install MIC:
 
 ```
 git clone https://github.com/keiserlab/metric-ion-classification.git 
-cd metric-ion-paper
+cd metric-ion-classification
 conda env create --name mic-env -f mic-env.yml
 conda activate mic-env
 pip install .
@@ -70,6 +70,6 @@ python -m pytest
 
 The tests may take a few minutes to run.
 
-## ChimeraX Package
+## ChimeraX Bundle
 
 Actively under development, coming soon!
