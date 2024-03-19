@@ -1,0 +1,27 @@
+channels:
+  - anaconda
+  - conda-forge
+  - pytorch
+  - defaults
+dependencies:
+  - python=3.8
+  - rdkit
+  - seaborn
+  - openbabel
+  - pip
+  - pymol-open-source
+  - xopen
+  - colorlog
+  - networkx
+  - scipy
+  - pytorch
+  - cpuonly
+  - numpy=1.21.6
+  - pip:
+    - biopython==1.72
+    - mmh3==2.5.1
+    - pdbecif
+    - joblib
+    - tqdm
+    - scikit-learn
+    - simplejson

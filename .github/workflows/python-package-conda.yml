@@ -1,0 +1,33 @@
+name: MIC Pytest
+
+on: [push]
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 5
+      matrix:
+        python-version: ['3.8']
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Add conda to system path
+      run: |
+        # $CONDA is an environment variable pointing to the root of the miniconda directory
+        echo $CONDA/bin >> $GITHUB_PATH
+    - name: Install dependencies
+      run: |
+        conda install python=${{ matrix.python-version}}
+        conda env update --file mic-env.yml --name base
+    - name: Install LUNA/MIC
+      run: |
+        pip install .
+    - name: Test with pytest
+      run: |
+        pip install pytest
+        pytest
