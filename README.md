@@ -5,7 +5,7 @@
 To install MIC:
 
 ```
-git clone 
+git clone https://github.com/keiserlab/metric-ion-classification.git 
 cd metric-ion-paper
 conda env create --name mic-env -f mic-env.yml
 conda activate mic-env
