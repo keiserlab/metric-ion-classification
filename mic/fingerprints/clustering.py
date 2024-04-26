@@ -13,7 +13,7 @@ def tanimoto_coeff(fp1, fp2):
 
 def populate_dists_matrix(df):
     """
-    Not really a matrix so much as a flat list since thats what rdkit Butina expects, for whatever reason
+    Not really a matrix so much as a flat list since thats what rdkit Butina expects
     """
     dists = []
     for i in tqdm(range(len(df.index))):
@@ -31,7 +31,7 @@ def get_splits(rand_clusters, all_clusters, num_examples, split = (.8, .1,.1), e
     # all_clusters - dict of counts for each cluster
     # num examples - total # of examples to split, used to determine counts
     # split - 3 elements, fraction of data to use for training, val, test splits respectively
-    # enforce - impose apriory certain clusters into certain datasets
+    # enforce - impose a priori certain clusters into certain datasets
     
     cluster_nums = {}
     counts = []

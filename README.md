@@ -12,7 +12,37 @@ conda activate mic-env
 pip install .
 ```    
 
+Installation may take some time, especially regarding conda dependency solving. We strongly recommend using an updated conda with conda-libmamba-solver, in which case installation should take a few minutes.
+
 If you encounter issues intalling LUNA, see https://github.com/keiserlab/LUNA installation instructions.
+
+### Requirements
+
+The dependencies for MIC are listed in mic-env.yml, reproduced here:
+```
+  - rdkit
+  - seaborn
+  - openbabel
+  - pip
+  - pymol-open-source
+  - xopen
+  - colorlog
+  - networkx
+  - scipy
+  - pytorch
+  - cpuonly
+  - numpy=1.21.6
+  - biopython==1.72
+  - mmh3==2.5.1
+  - pdbecif
+  - joblib
+  - tqdm
+  - scikit-learn
+  - simplejson
+```
+
+### System requirements:
+* MIC has been successfully installed and tested on Ubuntu 18.04, 20.04, and 22.04, Mac OS Monterey through Sonoma, and on a Windows machine running Ubuntu through WSL.
 
 ## Running MIC
 
@@ -73,3 +103,8 @@ The tests may take a few minutes to run.
 ## ChimeraX Bundle
 
 Actively under development, coming soon!
+
+### Citing MIC
+
+If you use this software, please cite our [preprint](https://www.biorxiv.org/content/10.1101/2024.03.18.585639v1).
+
