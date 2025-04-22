@@ -98,7 +98,7 @@ pip install pytest
 python -m pytest
 ```
 
-The tests may take a few minutes to run.
+The tests may take a 5-10 minutes to run.
 
 ## ChimeraX Bundle
 
