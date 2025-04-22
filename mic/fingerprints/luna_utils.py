@@ -171,6 +171,7 @@ def _perceive_chemical_groups(structures, ligand, options, blind=True):
 
     nb_compounds = set([x[0] for x in nb_pairs])
 
+
     perceiver = _get_perceiver(options)
 
     if blind:
@@ -178,12 +179,11 @@ def _perceive_chemical_groups(structures, ligand, options, blind=True):
         removed_compounds = set()
 
         for x in nb_compounds:
-            if (x.is_hetatm() or x.is_metal() or x.is_water()) and len(x) == 1:
+            if (x.is_hetatm() and len(x) == 1) or x.is_metal() or x.is_water():
                 removed_compounds.add(x)
             else:
                 final_nb_compounds.add(x)
-
-        perceiver.perceive_atom_groups(final_nb_compounds, mol_objs_dict=set(r.id for r in removed_compounds))
+        perceiver.perceive_atom_groups(final_nb_compounds, mol_objs_dict=set([r.id for r in removed_compounds]))
         atm_grps_mngr = perceiver.add_dummy_groups(removed_compounds)
 
     else:

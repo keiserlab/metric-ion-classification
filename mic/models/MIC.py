@@ -55,22 +55,27 @@ class MLP(nn.Module):
         return self.net(x)
     
 class MIC():
-    def __init__(self, fp_type = 'prune-eifp', extended_labels = False, device = 'cpu'):
+    def __init__(self, fp_type = 'prune-eifp', extended_labels = False, hetatm = False, device = 'cpu'):
         dir_path = os.path.dirname(os.path.abspath(__file__))
         self.device = device
         available_fp_types = ['prune-eifp']
         if fp_type not in available_fp_types:
             raise ValueError(f'Invalid fp_type {fp_type} requested, please select from {available_fp_types}')
-        
+        if extended_labels and hetatm:
+            raise ValueError(f'HETATM model only available for prevalent ion dataset.')        
+
         if extended_labels:
             fp_type = fp_type + '-extended'
-        self.model, self.model_config = self.load_model(os.path.join(dir_path, f'trained_models/{fp_type}'), device)
-        self.svc = joblib.load(os.path.join(dir_path, f'trained_models/{fp_type}.svc'))
-        if extended_labels:
-            self.labels = np.array(['HOH', 'MG', 'NA', 'ZN', 'CA', 'CL', 'K', 'MN', 'IOD', 'FE', 'BR'])
+            self.labels = np.array(['HOH', 'MG', 'NA', 'ZN', 'CA', 'CL', 'K', 'MN', 'IOD', 'FE', 'BR', 'Null'])
         else:
-            self.labels = np.array(['HOH', 'MG', 'NA', 'ZN', 'CA', 'CL'])
+            self.labels = np.array(['HOH', 'MG', 'NA', 'ZN', 'CA', 'CL', 'Null'])
+
+        if hetatm:
+            self.labels = np.append(self.labels, ['HETATM'])
+            fp_type = fp_type + '-hetatm'
         
+        self._load_model(os.path.join(dir_path, f'trained_models/{fp_type}'), device)
+ 
     def predict(self, x, entries, return_proba = True, return_confidence = True):
         """
         x - LUNA fingerprints in np array format
@@ -90,14 +95,15 @@ class MIC():
         results = results[final_cols].round(4)
         return results
        
-    def load_model(self, model_path, device):
+    def _load_model(self, model_path, device):
         with open(f'{model_path}.config') as f:
-            model_config = json.load(f)
-        model = MLP(model_config['layers'], dropout_p = model_config['dropout_p'])
+            self.model_config = json.load(f)
+        self.model = MLP(self.model_config['layers'], dropout_p = self.model_config['dropout_p'])
         if device=='cpu':
-            model.load_state_dict(torch.load(f'{model_path}.pt', map_location=torch.device('cpu')))
+            self.model.load_state_dict(torch.load(f'{model_path}.pt', map_location=torch.device('cpu')))
         else:
-            model.load_state_dict(torch.load(f'{model_path}.pt'))
-        model.eval()
-        model.to(device)
-        return model, model_config 
+            self.model.load_state_dict(torch.load(f'{model_path}.pt'))
+        self.model.eval()
+        self.model.to(device)
+        
+        self.svc = joblib.load(f'{model_path}.svc')

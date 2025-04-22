@@ -23,6 +23,7 @@ def get_argparser():
     parser.add_argument('-o', '--outfile', action='store')
     parser.add_argument('-p', '--preds_only', action='store_true')
     parser.add_argument('-ext', '--extended_set', action='store_true')
+    parser.add_argument('-h', '--hetatm', action='store_true')
     parser.add_argument('-cpu', '--cpu_only', action='store_true')
     parser.add_argument('-f', '--fps_only', action='store_true', help='Generate fingerprints, no predicting.')
     parser.add_argument('-fd', '--flag_distance', type=float, default=4)   
@@ -68,7 +69,7 @@ def main():
         mic_logger.warning(f"{len(fpparser.errors)} sites failed to generate fingerprints, check input file.")
     
     if not args.fps_only:
-        model = MIC(fp_type, args.extended_set, device=device)
+        model = MIC(fp_type, args.extended_set,args.hetatm, device=device)
         results = model.predict(fpparser.fps, fpparser.format_entries(), return_proba = not args.preds_only)
         results['flag_cluster'] = fpparser.flags    
 

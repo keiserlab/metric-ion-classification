@@ -44,7 +44,7 @@ def test_xray_entries():
     preds = mic_model.predict(fpparser.fps, fpparser.entries, return_proba = False)
 
     assert np.array_equal(preds['prediction'].values, ['MG','CA','ZN'])
-    assert np.array_equal(preds['confidence'].values, [0.9528, 0.8743, 0.9972])
+    assert np.array_equal(preds['confidence'].values, [0.97,0.8987,1.]) 
 
     for f in glob('*.pdb'):
         os.remove(f)
@@ -60,8 +60,8 @@ def test_cryoem_entries():
     mic_model = MIC('prune-eifp', False, device='cpu')
     preds = mic_model.predict(fpparser.fps, fpparser.entries, return_proba = False)
 
-    assert np.array_equal(preds['prediction'].values, ['CA','CA','CA','CA','CA','HOH','NA'])
-    assert np.array_equal(preds['confidence'].values, [0.5597,0.9642,0.7731,0.8489,0.9077,0.6306,0.4043])
+    assert np.array_equal(preds['prediction'].values, ['CA','CA','CA','CA','CA','HOH','CA'])
+    assert np.array_equal(preds['confidence'].values, [0.665,0.9468,0.8896,0.8313,0.8614,0.9051,0.3574])
 
     for f in glob('tests/tmp/*.pdb'):
         os.remove(f)

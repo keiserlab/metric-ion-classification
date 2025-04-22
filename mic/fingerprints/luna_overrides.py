@@ -157,7 +157,7 @@ class MICPerceiver(AtomGroupPerceiver):
             old_atoms = self._get_atoms(comp, keep_altloc=True)
             
             if len(old_atoms) != 1:
-                print(f"Warning: {len(atoms)} atoms found for {comp}, keeping first")
+                print(f"Warning: {len(old_atoms)} atoms found for {comp}, keeping first")
 
             new_atoms = [self._new_extended_atom(old_atoms[0])]
             new_atoms[0].invariants = [0, 0, 0, 0, 0, 0, 0]
