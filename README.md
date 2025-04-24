@@ -61,7 +61,7 @@ Options:
 * -o/--outfile: CSV created to store generated fingerprints or MIC predictions. If not provided, output is displayed in the terminal.
 * -p/--preds\_only: Only output predictions, not full probabilities from SVC.
 * -ext/--extended\_set: Generate predictions for the extended set of labels (K, Mn,Iod,Fe,Br)
-* -h/--hetatm: Use MIC-HETATMC model
+* -het/--hetatm: Use MIC-HETATMC model
 * -cpu/--cpu\_only: Ignore available GPUs and generate all predictions on CPU.
 * -co/--symexp\_cutoff: Radius in angstroms around densities kept following symmetry expansion. If running a single PDB file, it is recommended to use 7 for X-ray crystallography or -1 for Cryo-EM structures. Only use other values if you are planning on training a new model - default 7
 

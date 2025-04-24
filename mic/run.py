@@ -23,7 +23,7 @@ def get_argparser():
     parser.add_argument('-o', '--outfile', action='store')
     parser.add_argument('-p', '--preds_only', action='store_true')
     parser.add_argument('-ext', '--extended_set', action='store_true')
-    parser.add_argument('-h', '--hetatm', action='store_true')
+    parser.add_argument('-het', '--hetatm', action='store_true')
     parser.add_argument('-cpu', '--cpu_only', action='store_true')
     parser.add_argument('-f', '--fps_only', action='store_true', help='Generate fingerprints, no predicting.')
     parser.add_argument('-fd', '--flag_distance', type=float, default=4)   
