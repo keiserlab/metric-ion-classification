@@ -59,10 +59,9 @@ class MIC():
         dir_path = os.path.dirname(os.path.abspath(__file__))
         self.device = device
         available_fp_types = ['prune-eifp']
+
         if fp_type not in available_fp_types:
             raise ValueError(f'Invalid fp_type {fp_type} requested, please select from {available_fp_types}')
-        if extended_labels and hetatm:
-            raise ValueError(f'HETATM model only available for prevalent ion dataset.')        
 
         if extended_labels:
             fp_type = fp_type + '-extended'
