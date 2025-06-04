@@ -1,0 +1,73 @@
+<!--
+ChimeraX bundle names must start with "ChimeraX-"
+to avoid clashes with package names in pypi.python.org.
+When uploaded to the ChimeraX toolshed, the bundle
+will be displayed without the ChimeraX- prefix.
+-->
+
+<BundleInfo name="ChimeraX-MIC"
+	    version="0.0" package="chimerax.mic"
+  	    minSessionVersion="1" maxSessionVersion="1">
+
+  <!-- Additional information about bundle source -->
+  <Author>Laura Shub, Selina Liu</Author>
+  <Email>lshub@keiserlab.org, liuwenjin021011@berkeley.edu</Email>
+  <URL>https://github.com/keiserlab/metric-ion-paper</URL>
+
+  <!-- Synopsis is a one-line description
+       Description is a full multi-line description -->
+  <Synopsis>MIC Analysis Tool</Synopsis>
+  <Description>
+    Testing MIC Tool implementation
+  </Description>
+
+  <!-- Categories is a list where this bundle should appear -->
+  <Categories>
+    <Category name="Structure Analysis, Binding Analysis"/>
+  </Categories>
+
+  <!-- Dependencies on other ChimeraX/Python packages -->
+  <Dependencies>
+    <Dependency name="ChimeraX-Core" version="~=1.1"/>
+    <Dependency name="torch"/>
+    <Dependency name="numpy"/>
+    <Dependency name="mmh3" version="==2.5.1"/>
+    <Dependency name="pandas"/>
+    <Dependency name="scikit-learn"/>
+    <Dependency name="simplejson"/>
+    <Dependency name="biopython"/>
+    <Dependency name="tqdm"/>
+  </Dependencies>
+
+  <!-- Python and ChimeraX-specific classifiers
+       From https://pypi.python.org/pypi?%3Aaction=list_classifiers
+       Some Python classifiers are always inserted by the build process.
+       These include the Environment and Operating System classifiers
+       as well as:
+         Framework :: ChimeraX
+         Intended Audience :: Science/Research
+         Programming Language :: Python :: 3
+         Topic :: Scientific/Engineering :: Visualization
+         Topic :: Scientific/Engineering :: Chemistry
+         Topic :: Scientific/Engineering :: Bio-Informatics
+       The "ChimeraX :: Bundle" classifier is also supplied automatically.  -->
+<Classifiers>
+    <!-- Development Status should be compatible with bundle version number -->
+    <PythonClassifier>Development Status :: 3 - Alpha</PythonClassifier>
+    <PythonClassifier>License :: Freeware</PythonClassifier>
+    
+    <ChimeraXClassifier>ChimeraX :: Tool :: MIC :: Structure Analysis, Binding Analysis ::
+	Provides a graphical interface for MIC analysis</ChimeraXClassifier>
+
+    <!-- ChimeraX classifiers describe supplied functionality -->
+    <ChimeraXClassifier>ChimeraX :: Command :: mic :: Structure Analysis, Binding Analysis ::
+	Runs MIC on current structure</ChimeraXClassifier>
+</Classifiers>
+
+
+  <DataFiles>
+    <DataDir>models/trained_models</DataDir>
+    <DataFile>lunasmall/LUNA.fdef</DataFile>
+  </DataFiles>
+
+</BundleInfo>
