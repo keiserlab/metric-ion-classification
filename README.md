@@ -43,6 +43,7 @@ The dependencies for MIC are listed in mic-env.yml, reproduced here:
 
 ### System requirements:
 * MIC has been successfully installed and tested on Ubuntu 18.04, 20.04, and 22.04, Mac OS Monterey through Sonoma, and on a Windows machine running Ubuntu through WSL.
+* MIC ChimeraX bundle requires Microsoft Visual C++ 14.0 or greater
 
 ## Running MIC
 
