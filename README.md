@@ -1,5 +1,7 @@
 # Metric Ion Classification Tutorial
 
+[![DOI](https://zenodo.org/badge/774031177.svg)](https://doi.org/10.5281/zenodo.15596106)
+
 ## Installation
 
 To install MIC:
