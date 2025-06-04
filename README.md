@@ -103,7 +103,7 @@ The tests may take a 5-10 minutes to run.
 
 ## ChimeraX Bundle
 
-Actively under development, coming soon!
+The ChimeraX MIC bundle is available from [ChimeraX toolshed](https://cxtoolshed.rbvi.ucsf.edu/apps/chimeraxmic). All code can be found in this repository under the 'chimerax' branch.
 
 ### Citing MIC
 
